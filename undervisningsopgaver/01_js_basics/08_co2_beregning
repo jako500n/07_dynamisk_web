@@ -8,7 +8,8 @@
   </head>
   <body>
     <script>
-      let hilsen;
+      let timer;
+      let co2UdledtIKgVedFlyrejse = timer * 109;
 
       if (new Date().getHours() <= 10) {
         hilsen = "Godmorgen";
