@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let length = 20;
+      let width = 5;
+      let areal = length * width;
+      let hilsen;
+
+      if (new Date().getHours() <= 10) {
+        hilsen = "Godmorgen";
+      } else if (new Date().getHours() <= 18) {
+        hilsen = "Goddag";
+      } else if (new Date().getHours() <= 5) {
+        hilsen = "Godaften";
+      } else {
+        hilsen = "Godnat";
+      }
+
+      console.log(hilsen);
+    </script>
+  </body>
+</html>
