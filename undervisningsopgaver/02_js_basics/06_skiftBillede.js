@@ -57,9 +57,14 @@ function start() {
 }
 
 function skiftBillede() {
-  let img3 = document.querySelector(img3);
-  console.log("godt");
-  let img4 = document.createElement("img");
-  img4.src = "https://placeimg.com/400/300/arch?t=%22+4";
-  img3.appendChild(img4);
+  console.log("nice");
+  const img3 = document.createElement("img");
+  const billedTal = Math.round(Math.random() * 10);
+  img3.src = "https://placeimg.com/600/400/" + billedTal;
+  // let img3 = document.createElement("img");
+  // img3.src = "https://placeimg.com/700/500/nature";
+  // console.log("godt");
+  // let img4 = document.createElement("img");
+  // img4.src = "https://placeimg.com/400/300/arch?t=%22+4";
+  // img3.appendChild(img4);
 }
