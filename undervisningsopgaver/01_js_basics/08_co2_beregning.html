@@ -8,20 +8,12 @@
   </head>
   <body>
     <script>
-      let timer;
+      let timer = 3;
       let co2UdledtIKgVedFlyrejse = timer * 109;
 
-      if (new Date().getHours() <= 10) {
-        hilsen = "Godmorgen";
-      } else if (new Date().getHours() <= 18) {
-        hilsen = "Goddag";
-      } else if (new Date().getHours() <= 5) {
-        hilsen = "Godaften";
-      } else {
-        hilsen = "Godnat";
-      }
-
-      console.log(hilsen);
+      console.log(
+        `Ved 3 timers flyrejse har du udledt ${co2UdledtIKgVedFlyrejse} kg CO2!`
+      );
     </script>
   </body>
 </html>
