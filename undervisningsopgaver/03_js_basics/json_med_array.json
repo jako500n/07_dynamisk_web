@@ -1,0 +1,45 @@
+[
+  {
+    "navn": "frø",
+    "type": "amfibie",
+    "levested": "fra vandhullet",
+    "billede": "http://mabe-kea.dk/E19/pics/frog.png",
+    "evner": ["hopper meget", "nightvision", "svømmefødder"]
+  },
+  {
+    "navn": "gris",
+    "type": "pattedyr",
+    "levested": "fra grisefarmen",
+    "billede": "http://mabe-kea.dk/E19/pics/pig.png",
+    "evner": ["sveder aldrig", "god hukommelse", "klogere end din hund"]
+  },
+  {
+    "navn": "ræv",
+    "type": "pattedyr",
+    "levested": "fra skoven",
+    "billede": "http://mabe-kea.dk/E19/pics/fox.png",
+    "evner": ["god til at grave", "kommer i mange farver", "sgu meget hurtig"]
+  },
+  {
+    "navn": "sild",
+    "type": "fisk",
+    "levested": "fra havet",
+    "billede": "http://mabe-kea.dk/E19/pics/sild.jpg",
+    "evner": [
+      "sover meget",
+      "rig i omega 3",
+      "hunnerne lægger op til 40.000 æg"
+    ]
+  },
+  {
+    "navn": "krokodille",
+    "type": "krybdyr",
+    "levested": "fra floden",
+    "billede": "http://mabe-kea.dk/E19/pics/kroko.jpg",
+    "evner": [
+      "kan regulere hjerterytme",
+      "tygger aldrig sin mad",
+      "lever lige så længe som et menneske"
+    ]
+  }
+]
