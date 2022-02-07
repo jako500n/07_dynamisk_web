@@ -43,11 +43,41 @@
         margin-left: 1em;
         margin-top: 2em;
       }
+
+      .chosen {
+        color: red;
+      }
     </style>
   </head>
   <body>
+    <section class="test">
+      <h1>Alle</h1>
+      <nav>
+        <ul>
+          <li>
+            <button data-kategori="alle" class="test1 chosen">Alle</button>
+          </li>
+          <li>
+            <button data-kategori="forretter" class="test2">Forretter</button>
+          </li>
+          <li>
+            <button data-kategori="hovedretter" class="test3">
+              Hovedretter
+            </button>
+          </li>
+          <li>
+            <button data-kategori="desserter" class="test4">Desserter</button>
+          </li>
+          <li>
+            <button data-kategori="drikkevarer" class="test5">
+              Drikkevarer
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </section>
     <section class="liste"></section>
-    <template>
+    <template id="template_retter">
       <article class="retter">
         <h2 class="navn"></h2>
         <img src="" alt="" />
@@ -60,30 +90,55 @@
     <script>
       document.addEventListener("DOMContentLoaded", start);
 
+      let retter;
+      let filter = "alle";
+      const header = document.querySelector("h1");
+
       function start() {
-        const container = document.querySelector(".liste");
-        const personTemplate = document.querySelector("template");
-        let data = [];
-
-        // const  fil= "dyr_i_json.json";
-        const url = "https://babushka-dd8a.restdb.io/rest/menu";
-
-        const options = {
-          headers: { "x-apikey": "600ec2fb1346a1524ff12de4" },
-        };
+        console.log("Site startet");
 
         async function hentdata(url) {
           const resultat = await fetch(url, options);
           console.log("resultat", resultat);
-          const json = await resultat.json();
-          vis(json);
+          retter = await resultat.json();
+          visRetter();
         }
 
-        function vis(retter) {
-          console.log("ok2");
-          console.log(retter);
-          retter.forEach((ret) => {
-            const klon = personTemplate.cloneNode(true).content;
+        const url = "https://babushka-dd8a.restdb.io/rest/menu";
+        const options = {
+          headers: { "x-apikey": "600ec2fb1346a1524ff12de4" },
+        };
+
+        const filterKnapper = document.querySelectorAll("nav button");
+        filterKnapper.forEach((knap) =>
+          knap.addEventListener("click", filtrerRetter)
+        );
+
+        hentdata(url);
+      }
+
+      function filtrerRetter() {
+        console.log(this);
+
+        filter = this.dataset.kategori;
+        document.querySelector(".chosen").classList.remove("chosen");
+        this.classList.add("chosen");
+
+        visRetter();
+
+        header.textContent = this.textContent;
+      }
+
+      function visRetter() {
+        console.log("Retter loaded");
+
+        const container = document.querySelector(".liste");
+        const retTemplate = document.querySelector("#template_retter");
+        container.textContent = "";
+
+        retter.forEach((ret) => {
+          if (filter == ret.kategori || filter == "alle") {
+            const klon = retTemplate.cloneNode(true).content;
             klon.querySelector(".navn").textContent = ret.navn;
             klon.querySelector("img").src =
               "medium/" + ret.billednavn + "-md.jpg";
@@ -93,16 +148,9 @@
             klon.querySelector(".pris").textContent = ret.pris;
             klon.querySelector(".lang_beskrivelse").textContent =
               ret.langbeskrivelse;
-
-            // dyr.evner.forEach((evne) => {
-            //   klon.querySelector(".evneliste").innerHTML +=
-            //     "<li>" + evne + "</li>";
-            // });
-
             container.appendChild(klon);
-          });
-        }
-        hentdata(url);
+          }
+        });
       }
     </script>
   </body>
