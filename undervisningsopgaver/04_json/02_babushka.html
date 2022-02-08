@@ -47,10 +47,30 @@
       .chosen {
         color: red;
       }
+
+      #modal {
+        width: 100vw;
+        height: 100vh;
+        display: none;
+        position: fixed;
+        overflow: scroll;
+
+        left: 0;
+        top: 0;
+
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+
+      #modal article {
+        max-width: 1000px;
+        margin: auto;
+        background-color: snow;
+        margin-top: 5em;
+      }
     </style>
   </head>
   <body>
-    <section class="test">
+    <section id="first_section">
       <h1>Alle</h1>
       <nav>
         <ul>
@@ -76,7 +96,20 @@
         </ul>
       </nav>
     </section>
+
+    <aside id="modal">
+      <article>
+        <h2 class="navn"></h2>
+        <img src="" alt="" />
+        <h3 class="kategori"></h3>
+        <p class="kort_beskrivelse"></p>
+        <p class="pris"></p>
+        <p class="lang_beskrivelse"></p>
+      </article>
+    </aside>
+
     <section class="liste"></section>
+
     <template id="template_retter">
       <article class="retter">
         <h2 class="navn"></h2>
@@ -148,9 +181,22 @@
             klon.querySelector(".pris").textContent = ret.pris;
             klon.querySelector(".lang_beskrivelse").textContent =
               ret.langbeskrivelse;
+            klon
+              .querySelector("article")
+              .addEventListener("click", () => visRet(ret));
             container.appendChild(klon);
           }
         });
+
+        function visRet(ret) {
+          console.log(ret);
+
+          modal.querySelector("h2").textContent = ret.navn;
+
+          modal.style.display = "block";
+        }
+
+        modal.addEventListener("click", () => (modal.style.display = "none"));
       }
     </script>
   </body>
