@@ -4,7 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bungee&family=Gelasio&display=swap"
+      rel="stylesheet"
+    />
+    <title>Bistro Babushka</title>
     <style>
       * {
         margin: auto;
@@ -12,8 +18,46 @@
         box-sizing: border-box;
       }
 
-      body {
-        background-color: firebrick;
+      :root {
+        --clr-primary: #401607;
+        --clr-secondary: #733e1f;
+        --clr-h: #bf8b6d;
+        --clr-accent-: #5c2d2d;
+        --ff-h: "bungee", sans-serif;
+        --ff-p: "gelasio", sans-serif;
+      }
+
+      h1,
+      h2,
+      h3 {
+        line-height: 1;
+        font-family: var(--ff-h);
+      }
+
+      h1 {
+        color: snow;
+        text-align: center;
+        text-shadow: 3px 5px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 3rem;
+        }
+      }
+
+      @media (min-width: 600px) {
+        h1 {
+          font-size: 5rem;
+        }
+      }
+
+      p {
+        line-height: 1.6;
+      }
+
+      li {
+        list-style: none;
       }
 
       img {
@@ -21,41 +65,90 @@
         display: block;
       }
 
+      #first_section {
+        background-image: url(medium/roedvin-md.jpg);
+        background-size: cover;
+        background-position: 10% 23%;
+        padding-bottom: 8em;
+        padding-top: 8em;
+      }
+
+      #second_section {
+        width: 90%;
+      }
+
+      #second_section h2 {
+        text-align: center;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        color: var(--clr-h);
+      }
+
+      .generelt {
+        padding-top: 2em;
+        color: snow;
+        font-family: var(--ff-p);
+        text-align: center;
+      }
+
+      body {
+        background-color: var(--clr-primary);
+      }
+
+      @media (max-width: 600px) {
+        nav {
+          width: 100%;
+        }
+        ul {
+          flex-direction: column;
+        }
+      }
+
+      @media (min-width: 600px) {
+        nav {
+          width: 80%;
+        }
+      }
+
+      ul {
+        display: flex;
+        gap: 0.5em;
+      }
+
+      .btn {
+        background-color: var(--clr-secondary);
+        color: snow;
+        cursor: pointer;
+        font-family: var(--ff-p);
+        padding: 0.7em;
+        border-radius: 25%;
+        transition: 0.3s ease;
+      }
+
+      .btn:hover {
+        background-color: var(--clr-accent-);
+      }
+
       .liste {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
         gap: 2em;
         margin-top: 5em;
-      }
-
-      .person {
-        max-width: 100%;
-        outline: 2px solid black;
-        background-color: snow;
-        border-radius: 10%;
-        padding-top: 2em;
-        padding-bottom: 2em;
-      }
-
-      .navn {
-        text-align: center;
+        width: 90%;
       }
 
       .chosen {
-        color: red;
+        color: var(--clr-h);
+        background-color: snow;
       }
 
       .retter_container {
         max-width: 100rem;
         margin-inline: auto;
-        padding-inline: 2rem;
       }
 
       .retter {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
-        gap: 0.5em;
-        background-color: snow;
+        background-color: var(--clr-secondary);
         border-radius: 2%;
       }
 
@@ -64,6 +157,51 @@
         aspect-ratio: 1 / 1;
         object-fit: cover;
         border-radius: 2%;
+      }
+
+      .navn {
+        text-align: center;
+        color: snow;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+      }
+
+      .kategori {
+        color: var(--clr-h);
+        text-align: left;
+        padding-top: 0.5em;
+        padding-left: 0.5em;
+        padding-bottom: 0.25em;
+      }
+
+      .kort_beskrivelse {
+        color: snow;
+        padding-left: 0.5em;
+        padding-top: 0.25em;
+        padding-bottom: 0.25em;
+      }
+
+      .pris {
+        font-size: 1.5em;
+        color: black;
+        padding-top: 0.25em;
+        padding-bottom: 0.25em;
+        text-align: center;
+      }
+
+      .mere {
+        font-size: 1.1em;
+        color: snow;
+        background-color: var(--clr-accent-);
+        padding: 0.25em;
+        text-align: center;
+        cursor: pointer;
+        transition: 0.3s ease;
+      }
+
+      .mere:hover {
+        font-size: 1.2em;
+        background-color: var(--clr-h);
       }
 
       #modal {
@@ -87,81 +225,67 @@
     </style>
   </head>
   <body>
-    <section id="first_section">
-      <h1>Alle</h1>
-      <nav>
-        <ul>
-          <li>
-            <button data-kategori="alle" class="test1 chosen">Alle</button>
-          </li>
-          <li>
-            <button data-kategori="forretter" class="test2">Forretter</button>
-          </li>
-          <li>
-            <button data-kategori="hovedretter" class="test3">
-              Hovedretter
-            </button>
-          </li>
-          <li>
-            <button data-kategori="desserter" class="test4">Desserter</button>
-          </li>
-          <li>
-            <button data-kategori="drikkevarer" class="test5">
-              Drikkevarer
-            </button>
-          </li>
-        </ul>
-      </nav>
-    </section>
+    <main>
+      <section id="first_section">
+        <h1 class="title">Bistro Babushka</h1>
+      </section>
+      <section id="second_section">
+        <p class="generelt">
+          Hos Bistro Babushka serverer vi russisk-inspirerede retter til gode
+          priser. Her ses en oversigt over retter.
+        </p>
+        <h2>Alle</h2>
+        <nav>
+          <ul>
+            <li>
+              <p data-kategori="alle" class="btn chosen">Alle</p>
+            </li>
+            <li>
+              <p data-kategori="forretter" class="btn">Forretter</p>
+            </li>
+            <li>
+              <p data-kategori="hovedretter" class="btn">Hovedretter</p>
+            </li>
+            <li>
+              <p data-kategori="desserter" class="btn">Desserter</p>
+            </li>
+            <li>
+              <p data-kategori="drikkevarer" class="btn">Drikkevarer</p>
+            </li>
+          </ul>
+        </nav>
+      </section>
 
-    <aside id="modal">
-      <article>
-        <h2 class="navn"></h2>
-        <img src="" alt="" />
-        <h3 class="kategori"></h3>
-        <p class="kort_beskrivelse"></p>
-        <p class="pris"></p>
-        <p class="lang_beskrivelse"></p>
-      </article>
-    </aside>
+      <aside id="modal">
+        <article>
+          <h2 class="navn"></h2>
+          <img src="" alt="" />
+          <h3 class="kategori"></h3>
+          <p class="kort_beskrivelse"></p>
+          <p class="pris"></p>
+          <p class="lang_beskrivelse"></p>
+        </article>
+      </aside>
 
-    <section class="liste"></section>
+      <section class="liste"></section>
 
-    <template id="template_retter">
-      <article class="retter">
-        <img src="" alt="" />
-        <h2 class="navn"></h2>
-        <h3 class="kategori"></h3>
-        <p class="kort_beskrivelse"></p>
-        <p class="pris"></p>
-      </article>
-    </template>
-
-    <!-- <template id="template_retter">
-      <article class="retter">
-        <div class="retter_container">
-          <div class="retter_grid">
-            <div class="retter_boks til_boks">
-              <img src="" alt="" />
-            </div>
-            <div class="retter_boks_indhold">
-              <div>
-                <h2 class="navn"></h2>
-                <h3 class="kategori"></h3>
-                <p class="kort_beskrivelse"></p>
-                <p class="pris"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-    </template> -->
+      <template id="template_retter">
+        <article class="retter">
+          <h2 class="navn"></h2>
+          <img src="" alt="" />
+          <h3 class="kategori"></h3>
+          <p class="kort_beskrivelse"></p>
+          <p class="pris"></p>
+          <p class="mere"></p>
+        </article>
+      </template>
+    </main>
     <script>
       document.addEventListener("DOMContentLoaded", start);
 
       let retter;
       let filter = "alle";
-      const header = document.querySelector("h1");
+      const header = document.querySelector("h2");
 
       function start() {
         console.log("Site startet");
@@ -178,7 +302,7 @@
           headers: { "x-apikey": "600ec2fb1346a1524ff12de4" },
         };
 
-        const filterKnapper = document.querySelectorAll("nav button");
+        const filterKnapper = document.querySelectorAll("nav p");
         filterKnapper.forEach((knap) =>
           knap.addEventListener("click", filtrerRetter)
         );
@@ -213,8 +337,9 @@
               "medium/" + ret.billednavn + "-md.jpg";
             klon.querySelector(".kategori").textContent = ret.kategori;
             klon.querySelector(".kort_beskrivelse").textContent =
-              ret.kortbeskrivelse;
-            klon.querySelector(".pris").textContent = ret.pris;
+              ret.kortbeskrivelse + ".";
+            klon.querySelector(".pris").textContent = ret.pris + ",-";
+            klon.querySelector(".mere").textContent = "Læs mere her!";
             klon
               .querySelector("article")
               .addEventListener("click", () => visRet(ret));
