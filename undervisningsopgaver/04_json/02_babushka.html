@@ -96,23 +96,19 @@
       }
 
       @media (max-width: 600px) {
-        nav {
-          width: 100%;
-        }
         ul {
           flex-direction: column;
-        }
-      }
-
-      @media (min-width: 600px) {
-        nav {
-          width: 80%;
         }
       }
 
       ul {
         display: flex;
         gap: 0.5em;
+        width: 80%;
+      }
+
+      li {
+        flex-basis: 100%;
       }
 
       .btn {
@@ -121,8 +117,9 @@
         cursor: pointer;
         font-family: var(--ff-p);
         padding: 0.7em;
-        border-radius: 25%;
+        border-radius: 15%;
         transition: 0.3s ease;
+        text-align: center;
       }
 
       .btn:hover {
@@ -135,6 +132,7 @@
         gap: 2em;
         margin-top: 5em;
         width: 90%;
+        padding-bottom: 3em;
       }
 
       .chosen {
@@ -181,6 +179,13 @@
         padding-bottom: 0.25em;
       }
 
+      .lang_beskrivelse {
+        color: snow;
+        padding-left: 0.5em;
+        padding-top: 0.25em;
+        padding-bottom: 0.25em;
+      }
+
       .pris {
         font-size: 1.5em;
         color: black;
@@ -217,10 +222,51 @@
         background-color: rgba(0, 0, 0, 0.8);
       }
 
-      #modal article {
-        max-width: 1000px;
+      #modal img {
+        height: 70vh;
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+      }
+
+      .modal_retter {
+        background-color: var(--clr-secondary);
         margin: auto;
-        background-color: snow;
+        width: 80vw;
+        text-align: center;
+      }
+
+      .modal_retter .kategori {
+        text-align: center;
+      }
+
+      .luk {
+        font-size: 1.1em;
+        color: snow;
+        background-color: var(--clr-accent-);
+        padding: 0.25em;
+        cursor: pointer;
+        transition: 0.3s ease;
+        width: 15%;
+        border-radius: 15%;
+      }
+
+      .luk:hover {
+        font-size: 1.2em;
+        background-color: var(--clr-h);
+      }
+
+      .modal_retter .lang_beskrivelse {
+        max-width: 70%;
+        padding-bottom: 2em;
+      }
+
+      footer {
+        font-family: var(--ff-p);
+        text-align: center;
+        color: var(--clr-h);
+        font-size: 1.5em;
+        padding-bottom: 1em;
       }
     </style>
   </head>
@@ -250,6 +296,9 @@
               <p data-kategori="desserter" class="btn">Desserter</p>
             </li>
             <li>
+              <p data-kategori="sideorders" class="btn">Sideorders</p>
+            </li>
+            <li>
               <p data-kategori="drikkevarer" class="btn">Drikkevarer</p>
             </li>
           </ul>
@@ -257,12 +306,11 @@
       </section>
 
       <aside id="modal">
-        <article>
-          <h2 class="navn"></h2>
+        <article class="modal_retter">
           <img src="" alt="" />
+          <h2 class="navn"></h2>
           <h3 class="kategori"></h3>
-          <p class="kort_beskrivelse"></p>
-          <p class="pris"></p>
+          <p class="luk"></p>
           <p class="lang_beskrivelse"></p>
         </article>
       </aside>
@@ -280,6 +328,7 @@
         </article>
       </template>
     </main>
+    <footer>Lavet af Jakob Semajer-Garic</footer>
     <script>
       document.addEventListener("DOMContentLoaded", start);
 
@@ -354,9 +403,7 @@
         modal.querySelector("h2").textContent = ret.navn;
         modal.querySelector("img").src = "medium/" + ret.billednavn + "-md.jpg";
         modal.querySelector("h3").textContent = ret.kategori;
-        modal.querySelector(".kort_beskrivelse").textContent =
-          ret.kortbeskrivelse;
-        modal.querySelector(".pris").textContent = ret.pris;
+        modal.querySelector(".luk").textContent = "Luk";
         modal.querySelector(".lang_beskrivelse").textContent =
           ret.langbeskrivelse;
         modal.style.display = "block";
