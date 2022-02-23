@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="565" height="371" viewBox="0 0 565 371">
+  <defs>
+    <clipPath id="clip-venstre_bund">
+      <rect width="565" height="371"/>
+    </clipPath>
+  </defs>
+  <g id="venstre_bund" clip-path="url(#clip-venstre_bund)">
+    <rect width="565" height="371" fill="#f1ecdd"/>
+    <line id="Line_20" data-name="Line 20" x2="246" y2="2" transform="translate(0 163)" fill="none" stroke="#0c0440" stroke-width="3"/>
+    <line id="Line_21" data-name="Line 21" x1="128" y1="207" transform="translate(245 164)" fill="none" stroke="#0c0440" stroke-width="3"/>
+  </g>
+</svg>
